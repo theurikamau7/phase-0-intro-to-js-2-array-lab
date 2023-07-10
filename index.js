@@ -1,84 +1,59 @@
 // Write your solution here!
 const cats = ["Milo", "Otis", "Garfield"];
-console.log(cats);
 
-function destructivelyAppendCat(name) {
-    cats.push(name);
-  }
-  
-  console.log(cats);
-  
-  destructivelyAppendCat("Ralph");
-  console.log(cats);
-
-cats.length = 3;
-console.log(cats);
-
-function destructivelyPrependCat(name) {
-    cats.unshift(name);
+function beforeEach(){
+    cats.length = 0;
+    cats.push('Milo', 'Otis', 'Garfield');
 }
 
-console.log(cats);
-
-destructivelyPrependCat("Bob");
-console.log(cats);
-
-cats.shift();
-console.log(cats);
-
-function destructivelyRemoveLastCat() {
-    return cats.pop();
+function destructivelyAppendCat(name){
+    beforeEach()
+    cats.push(name)
 }
-
+destructivelyAppendCat("Ralph")
 console.log(cats);
 
-const removedLastCat = destructivelyRemoveLastCat();
-console.log(removedLastCat);
-
-cats.push(removedLastCat);
-console.log(cats);
-
-function destructivelyRemoveFirstCat() {
-    return cats.shift();
+function destructivelyPrependCat(name){
+    beforeEach()
+    cats.unshift(name)
 }
-
+destructivelyPrependCat("Bob")
 console.log(cats);
 
-const removedFirstCat = destructivelyRemoveFirstCat();
-console.log(removedFirstCat);
-
-cats.unshift(removedFirstCat);
-console.log(cats);
-
-function prependCat(array, name) {
-    return [name, ...array];
+function destructivelyRemoveLastCat(){
+    beforeEach()
+    cats.pop()
 }
-  
-const newerCats = prependCat(cats, "Arnold");
+destructivelyRemoveLastCat()
 console.log(cats);
-console.log(newerCats);
 
-
-function appendCat(array, name) {
-  return array.concat(name);
+function destructivelyRemoveFirstCat(){
+    beforeEach()
+    cats.shift()
 }
-
-const newCats = appendCat(cats, "Broom");
+destructivelyRemoveFirstCat()
 console.log(cats);
-console.log(newCats);
 
-function removeLastCat(array) {
-    return array.slice(0, -1);
+function appendCat(name){
+    beforeEach()
+    return [...cats, name]
 }
-  
-const removedGarfield = removeLastCat(cats);
-console.log(cats);
-console.log(removedGarfield);
+appendCat("Broom")
 
-function removeFirstCat(array) {
-    return array.slice(1);
+function prependCat(name){
+    beforeEach()
+    return [name, ...cats]
 }
-  
-const removeMilo = removeFirstCat(cats);
-console.log(removeMilo);
-console.log(cats);
+prependCat("Arnold");
+
+function removeLastCat(){
+    beforeEach()
+    return cats.slice(0,2)
+}
+removeLastCat()
+
+function removeFirstCat(){
+    beforeEach()
+    return cats.slice(1)
+}
+ removeFirstCat()
